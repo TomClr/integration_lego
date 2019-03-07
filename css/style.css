@@ -1,0 +1,890 @@
+/* -----------------------------
+   -------- FONTS ----------------
+   -----------------------------
+*/
+
+@font-face {
+    font-family: "KGSecond";
+    src: url("../font/kgsecondchancessolid-webfont.woff") format("woff"),
+        url("../font/kgsecondchancessolid-webfont.woff2") format("woff2"),
+        url("../font/KGSecondChancesSolid.ttf") format("truetype");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 1em;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 1220px;
+        margin: 0 auto;
+    }
+}
+
+body,
+div,
+p,
+a {
+    color: #424242;
+}
+
+p,
+footer ul li,
+input,
+textarea {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+
+h1,
+h2 {
+    display: table;
+    white-space: nowrap;
+    text-align: center;
+    font-family: "KGSecond";
+    color: #d01012;
+    font-size: 36px;
+}
+
+h3 {
+    font-family: "KGSecond";
+    text-align: center;
+}
+
+.yellow {
+    color: #ffff3c;
+}
+
+.yellow:before,
+.yellow:after {
+    content: "";
+    display: table-cell;
+    width: 50%;
+    background: linear-gradient(#ffff3c, #ffff3c) repeat-x left center;
+    background-size: 1.5px 1.5px;
+}
+
+h2:before,
+h2:after {
+    content: "";
+    display: table-cell;
+    width: 50%;
+    background: url('../img/HeadDot.png') repeat-x left center;
+}
+
+/* -----------------------------
+   -------- HEADER -------------
+   -----------------------------
+*/
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu>li {
+    margin-right: 25px;
+}
+
+.menu>li>a {
+    font-family: "KGSecond";
+    font-size: 22px;
+}
+
+.menu>li>a:hover {
+    color: red;
+}
+
+.menu>li a.active {
+    color: red;
+}
+
+.nav a {
+    padding: 1em;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.icon-menu {
+    display: none;
+}
+
+@keyframes anim-sous-menu {
+    from {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.sous-menu {
+    position: absolute;
+    width: 180px;
+    height: 150px;
+    line-height: 30px;
+    background-color: #323232;
+    border-radius: 3px;
+    display: none;
+    animation: anim-sous-menu 0.6s ease;
+}
+
+.sous-menu>li>a {
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 5px;
+    text-align: left;
+}
+
+.sous-menu li:first-child {
+    padding-top: 13px;
+}
+
+.sous-menu::before {
+    content: '';
+    position: absolute;
+    left: 54%;
+    bottom: 93%;
+    margin-top: 0rem;
+    margin-left: -1rem;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-right: 9px solid #323232;
+    transform: rotate(90deg);
+}
+
+.sous-menu li {
+    margin-left: 15px;
+}
+
+.has-children {
+    position: relative;
+}
+
+.has-children:hover>.sous-menu {
+    display: block;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .menu>li {
+        margin-right: 15px;
+    }
+
+    .menu>li>a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 936px) {
+
+    .nav,
+    .nav .menu {
+        flex-flow: column wrap;
+        align-items: normal;
+        background-color: #f3f3f3;
+    }
+
+    .menu-disabled {
+        display: none !important;
+    }
+
+    .menu-active {
+        display: flex !important;
+    }
+
+    .nav li {
+        margin: 0;
+    }
+
+
+    .menu-responsive {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .icon-menu {
+        display: block;
+        margin: 1em;
+        cursor: pointer;
+    }
+
+    .sous-menu {
+        position: relative;
+        text-align: center;
+        width: inherit;
+        height: 150px;
+        animation: none;
+        background-color: #dedede;
+    }
+
+    .sous-menu::before {
+        display: none;
+    }
+
+    .sous-menu>li>a {
+        text-align: center;
+        color: #323232;
+    }
+}
+
+/* -----------------------------
+   -------- SECTION 1 ----------
+   -----------------------------
+*/
+
+.section-1 {
+    background-color: #D41618;
+    /* width: inherit;
+    margin: auto; */
+}
+
+.section-1 .titre h1 {
+    text-align: center;
+    color: #ffff3c;
+    font-size: 36px;
+}
+
+.section-1 .sous-titre {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -61px;
+}
+
+.section-1 .sous-titre p {
+    color: #fff;
+    width: 79%;
+}
+
+.section-1 .sous-titre img {
+    margin-right: 15px;
+}
+
+/* -----------------------------
+   -------- SLIDER -------------
+   -----------------------------
+*/
+
+section.slider {
+    /* background: url('../img/spiderman-lego.jpg'); */
+    /* height: 693px;
+    margin-top: -41px; */
+}
+
+section.slider .diapo-1 {
+    background: url('../img/spiderman-lego.jpg');
+    background-size: cover;
+    height: 693px;
+    margin-top: -41px;
+}
+
+section.slider .diapo-2 {
+    background: url('../img/rando-lego.jpg');
+    background-size: cover;
+    height: 693px;
+    margin-top: -41px;
+}
+
+section.slider .diapo-3 {
+    background: url('../img/bureau-lego.jpg');
+    background-size: cover;
+    height: 693px;
+    margin-top: -41px;
+}
+
+section.slider .arrow {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 72%;
+    z-index: 5;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease-out;
+}
+
+section.slider .arrow:hover {
+    border-color: #d01012;
+}
+
+section.slider .arrow-next {
+    right: 40px;
+    transform: rotate(45deg);
+}
+
+section.slider .arrow-prev {
+    left: 40px;
+    transform: rotate(225deg);
+}
+
+section.slider .dots {
+    width: 100%;
+    position: absolute;
+    bottom: -12%;
+    z-index: 4;
+    padding: 0;
+    text-align: center;
+}
+
+section.slider .dots li{
+	width: 13px;
+	height: 13px;
+	display: inline-block;
+	margin: 5px;
+	background: #fff;
+	list-style-type: none;
+	border-radius: 50%;
+  cursor:pointer;
+  transition:background 0.3s ease-out;
+}
+
+section.slider .dots li.active {
+    background: #d01012;
+}
+
+section.slider .dots li:hover {
+    background: #d01012;
+}
+
+/* -----------------------------
+   -------- COL-3 --------------
+   -----------------------------
+*/
+
+section #column {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+section #column p {
+    width: 80%;
+    margin: auto;
+}
+
+#col-1,
+#col-2,
+#col-3 {
+    text-align: center;
+}
+
+@media screen and (min-width: 1200px) {
+
+    #col-1:after,
+    #col-2:after {
+        content: "";
+        display: inline-block;
+        vertical-align: top;
+        width: 92%;
+        margin-top: -37%;
+        margin-right: -100%;
+        margin-left: 10px;
+        border-top: 1px solid rgb(165, 165, 165);
+        transform: rotate(90deg);
+    }
+}
+
+/* -----------------------------
+   -------- YOUTUBE ------------
+   -----------------------------
+*/
+
+section.youtube {
+    margin-top: 25px;
+}
+
+.video {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.video div {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.intro #intro .video iframe,
+.exit .quizz .video iframe,
+.alreadyplayed #intro .video iframe,
+.identityset #intro .video iframe,
+#notabene .video iframe,
+#message_intro .video iframe,
+.fancybox_body .video iframe,
+#comments .video iframe,
+#description .video iframe,
+.alreadyplayed .video iframe,
+#adserver .video iframe {
+    max-width: none !important;
+}
+
+/* -----------------------------
+   -------- PARALAX ------------
+   -----------------------------
+*/
+
+section.paralax {
+    background: linear-gradient(rgba(16, 16, 16, 0.4), rgba(4, 4, 4, 0.62)), url('../img/ville-lego.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section.paralax p {
+    text-align: center;
+    color: #fff;
+    margin-top: -35px;
+}
+
+section.paralax .btn {
+    text-align: center;
+}
+
+.btn button,
+.btn a,
+.btn input {
+    margin: 13px 5px 24px 11px;
+}
+
+.btn button {
+    padding: 11px 35px;
+    background-color: #ffff3c;
+    border: 1.5px solid #ffff3c;
+    border-radius: 2px;
+    font-family: KGSecond;
+    color: #d01012;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn button:hover {
+    background-color: #e9e921;
+    border-color: #e9e921;
+}
+
+.btn a {
+    padding: 11px 35px;
+    background-color: #d11013;
+    border: 1.5px solid #d11013;
+    border-radius: 2px;
+    font-family: KGSecond;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.btn a:hover {
+    background-color: #bd1114;
+    border-color: #bd1114;
+}
+
+.btn input {
+    padding: 11px 35px;
+    background-color: transparent;
+    border: 1.5px solid #ffff3c;
+    border-radius: 2px;
+    font-family: KGSecond;
+    color: #ffff3c;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn input:hover {
+    background-color: #ffff3c;
+    border-color: #ffff3c;
+    color: #d01012;
+}
+
+
+/* -----------------------------
+   -------- MOSAIQUE -----------
+   -----------------------------
+*/
+
+@media screen and (max-width: 600px) {
+
+    section .mosaic-responsive .row1,
+    section .mosaic-responsive .row2,
+    section .mosaic-responsive .row3,
+    section .mosaic-responsive .row4 {
+        display: block !important;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 957px) {
+
+    section .mosaic {
+        display: none;
+    }
+
+    section .mosaic-responsive .row1,
+    section .mosaic-responsive .row2,
+    section .mosaic-responsive .row3,
+    section .mosaic-responsive .row4 {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        align-items: center;
+    }
+
+    section .mosaic-responsive img {
+        height: auto;
+        width: 230px;
+        padding-bottom: 63px;
+    }
+}
+
+
+
+@media screen and (min-width: 958px) {
+
+    section .mosaic-responsive {
+        display: none;
+    }
+
+    section .mosaic {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-around;
+        width: 953px;
+        margin: 0 auto;
+    }
+
+    section .mosaic div {
+        margin: 5px;
+    }
+
+    .starwars {
+        background: url('../img/cube-starwars.png');
+        width: 160px;
+        height: 160px;
+    }
+
+    .starwars img {
+        display: block;
+        margin: auto;
+        margin-top: 36%;
+    }
+
+    .bigbang {
+        width: 320px;
+        height: 160px;
+        background: url('../img/cube-bigbang.png');
+    }
+
+    .bigbang img {
+        display: block;
+        margin: auto;
+        margin-top: 18%;
+    }
+
+    .avenger {
+        width: 320px;
+        height: 384px;
+        background: url('../img/cube-avenger.png');
+    }
+
+    .avenger img {
+        margin-top: 32%;
+        margin-left: -11%;
+    }
+
+    .batman {
+        width: 320px;
+        height: 384px;
+        background: url('../img/cube-batman.png');
+        position: relative;
+        top: -196px;
+    }
+
+    .batman img {
+        display: block;
+        margin: auto;
+        margin-top: 39%;
+    }
+
+    .indiana {
+        width: 160px;
+        height: 160px;
+        background: url('../img/cube-indiana.png');
+        position: relative;
+        top: -196px;
+    }
+
+    .indiana img {
+        display: block;
+        margin: auto;
+        margin-top: 42%;
+    }
+
+    .harry {
+        width: 320px;
+        height: 160px;
+        background: url('../img/cuba-harry.png');
+        position: relative;
+        top: 28px;
+        right: 211px;
+    }
+
+    .harry img {
+        display: block;
+        margin: auto;
+        margin-top: 15%;
+    }
+
+    .lord {
+        width: 160px;
+        height: 160px;
+        background: url('../img/cube-lord.png');
+        position: relative;
+        top: -366px;
+        left: 372px;
+    }
+
+    .lord img {
+        display: block;
+        margin: auto;
+        margin-top: 26%;
+    }
+}
+
+/* -----------------------------
+   -------- FOOTER -------------
+   -----------------------------
+*/
+
+@media screen and (min-width: 958px) {
+    footer {
+        margin-top: -266px;
+    }
+}
+
+footer {
+    background: url('../img/footer-background.png');
+}
+
+.footer h3 {
+    text-align: left;
+    color: #d01012;
+}
+
+.footer ul {
+    margin: 0;
+    padding: 0;
+}
+
+.footer ul li {
+    list-style-type: none;
+}
+
+.footer li:not(:nth-child(1)) {
+    padding-bottom: 15px;
+}
+
+.footer .fas {
+    padding-right: 15px;
+    font-size: 20px;
+    color: #d01012;
+}
+
+footer .footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .sujet {
+    flex-basis: 34%;
+}
+
+.footer-inf {
+    background-color: #ffff3c;
+}
+
+.footer-inf .inf {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.footer-inf .inf p {
+    font-weight: 500;
+}
+
+.footer-inf ul li {
+    display: inline;
+    list-style-type: none;
+}
+
+.social {
+    display: inline-block;
+    height: 33px;
+    width: 33px;
+    background-color: red;
+    border-radius: 50%;
+    margin-right: 15px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.social:hover {
+    transform: scale(1.1);
+    transition: all 0.4s ease-in-out;
+}
+
+.social li i {
+    color: #fff;
+    font-weight: 600;
+}
+
+
+
+form input[type="text"],
+form textarea {
+    width: 319px;
+    border: 2px solid rgb(235, 235, 235);
+    margin-top: 15px;
+    padding-left: 10px;
+    font-size: 17px;
+    color: rgba(161, 161, 161, 0.6);
+}
+
+form input::placeholder,
+form textarea::placeholder {
+    font-size: 17px;
+    color: rgba(161, 161, 161, 0.6);
+}
+
+form textarea {
+    height: 128px;
+    padding-top: 8px;
+}
+
+form input[type="text"] {
+    height: 45px;
+}
+
+form label.hide {
+    display: none;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 28px;
+    padding-right: 15px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+
+[type="radio"]:checked+label:before,
+[type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #D41618;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+form input[type="submit"] {
+    padding: 11px 35px;
+    background-color: #d11013;
+    border: 1.5px solid #d11013;
+    border-radius: 2px;
+    font-family: KGSecond;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    float: right;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #b90e11;
+}
