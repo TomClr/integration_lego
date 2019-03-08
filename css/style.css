@@ -298,10 +298,34 @@ h2:after {
    -----------------------------
 */
 
+/* section.slider {
+    background: url('../img/spiderman-lego.jpg');
+    height: 693px;
+    margin-top: -41px;
+} */
+
+/* section.slider .progress {
+    z-index: 9998;
+    position: absolute;
+    background: rgba(255, 255, 255, .3);
+    height: 0.5rem;
+    width: 100%;
+    bottom: 564px;
+    border-top: 1px rgba(0, 0, 0, .15) solid;
+}
+
+section.slider .progress .bar {
+    height: 100%;
+    width: 0%;
+    background: #e9e921;
+}
+
 section.slider {
-    /* background: url('../img/spiderman-lego.jpg'); */
-    /* height: 693px;
-    margin-top: -41px; */
+    background-color: #000;
+}
+
+section.slider. .diapo {
+    background-color: #000;
 }
 
 section.slider .diapo-1 {
@@ -360,16 +384,16 @@ section.slider .dots {
     text-align: center;
 }
 
-section.slider .dots li{
-	width: 13px;
-	height: 13px;
-	display: inline-block;
-	margin: 5px;
-	background: #fff;
-	list-style-type: none;
-	border-radius: 50%;
-  cursor:pointer;
-  transition:background 0.3s ease-out;
+section.slider .dots li {
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    margin: 5px;
+    background: #fff;
+    list-style-type: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease-out;
 }
 
 section.slider .dots li.active {
@@ -378,7 +402,7 @@ section.slider .dots li.active {
 
 section.slider .dots li:hover {
     background: #d01012;
-}
+} */
 
 /* -----------------------------
    -------- COL-3 --------------

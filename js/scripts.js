@@ -15,32 +15,37 @@ $(document).ready(function () {
         };
     });
 
-    //SLIDER
+/*     //SLIDER
     let $carousel = $('.slider'),
         $img = $('.slider .diapo'),
         indexImg = $img.length - 1,
         i = 0,
         clicked = 1,
+        hasBeenClicked = false;
         $currentImg = $img.eq(i);
 
     $img.css('display', 'none');
     $currentImg.css('display', 'block');
 
+    // BARRE DEFILEMENT
+
+
     // ARROW
     $carousel.append('<div class="arrow arrow-prev"></div><div class="arrow arrow-next"></div>');
 
     $('.arrow-next').on("click", function () {
+        hasBeenClicked = true;
         i++;
 
         if (i <= indexImg) {
             $img.css('display', 'none');
             $currentImg = $img.eq(i);
-            $currentImg.css('display', 'block');
+            $currentImg.fadeIn("slow");
         } else {
             i = 0;
             $img.css('display', 'none');
             $currentImg = $img.eq(i);
-            $currentImg.css('display', 'block');
+            $currentImg.fadeIn("slow");
         }
 
         clicked = clicked + 1;
@@ -62,12 +67,12 @@ $(document).ready(function () {
         if (i >= 0) {
             $img.css('display', 'none');
             $currentImg = $img.eq(i);
-            $currentImg.css('display', 'block');
+            $currentImg.fadeIn("slow");
         } else {
             i = indexImg;
             $img.css('display', 'none');
             $currentImg = $img.eq(i);
-            $currentImg.css('display', 'block');
+            $currentImg.fadeIn("slow");
         }
 
         clicked = clicked - 1;
@@ -84,7 +89,7 @@ $(document).ready(function () {
 
     // Defilement auto
     function slideImg() {
-        setTimeout(function () {
+        let timeOutHandle = setInterval(function () {
             if (i < indexImg) {
                 i++;
             } else {
@@ -93,14 +98,14 @@ $(document).ready(function () {
 
             $img.css('display', 'none');
             $currentImg = $img.eq(i);
-            $currentImg.css('display', 'block');
+            $currentImg.fadeIn("slow");
 
             clicked = i + 1;
             $('.carousel-buttons').removeClass("active");
             $('#carousel' + clicked).addClass("active");
-
-            slideImg();
+            
         }, 4000);
+        
     }
 
     slideImg();
@@ -120,13 +125,13 @@ $(document).ready(function () {
 
         $img.css('display', 'none');
         $currentImg = $img.eq(findTheNumb - 1);
-        $currentImg.css('display', 'block');
+        $currentImg.fadeIn("slow");
 
         $(".carousel-buttons").removeClass("active");
         $(this).addClass("active");
     });
 
-    $('.carousel-buttons-container').find("li").first().addClass("active");
+    $('.carousel-buttons-container').find("li").first().addClass("active"); */
 
 
 

@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
     function startSlider(obj, timer) {
 
         let id = "#" + obj.attr("id");
-        let slideCount = obj.find('ul li').length;
+        let slideCount = obj.find('.slideUl li').length;
         slideWidth = obj.attr("data-width");
         let sliderUlWidth = (slideCount + 1) * slideWidth;
         let time = 2;
@@ -17,6 +17,53 @@ jQuery(document).ready(function () {
         isPause = false; //false for auto slideshow
 
         $bar = obj.find('.progress .bar');
+
+        // ARROW
+        /* obj.append('<div class="control control_next"></div><div class="control control_prev"></div>'); */
+
+        // DOTS
+        obj.append('<div class="carousel-buttons-container"><ul class="dots">');
+        let i = 0,
+            addId = i + 1,
+            $img = $('.slideUl .slide'),
+            indexImg = $img.lenght - 1,
+            clicked = 1,
+            $currentImg = $img.eq(i);
+
+        for (let a = 0; a <= slideCount - 1; a++) {
+            $('.dots').append('<li class="carousel-buttons" id="carousel' + addId++ + '"></li>');
+        };
+
+        $('#carousel1').addClass('active');
+
+        /* $('.control_next').on("click", function () {
+            clicked = clicked + 1;
+
+            if (clicked <= 3) {
+                $('.carousel-buttons').removeClass("active");
+                $('#carousel' + clicked).addClass("active");
+            } else {
+                clicked = 1;
+                $('.carousel-buttons').removeClass("active");
+                $('#carousel' + clicked).addClass("active");
+            }
+        }); */
+
+        /* $('.control_prev').on("click", function () {
+            clicked = clicked - 1;
+
+            if (clicked > 0) {
+                $('.carousel-buttons').removeClass("active");
+                $('#carousel' + clicked).addClass("active");
+            } else {
+                clicked = indexImg + 1;
+                $('.carousel-buttons').removeClass("active");
+                $('#carousel' + clicked).addClass("active");
+            }
+        }); */
+
+
+
 
         function startProgressbar() {
             resetProgressbar();
@@ -46,13 +93,13 @@ jQuery(document).ready(function () {
 
         function startslide() {
 
-            $(id + ' ul li:last-child').prependTo(id + ' ul');
-            obj.find('ul').css({
+            $(id + ' .slideUl li:last-child').prependTo(id + ' .slideUl');
+            obj.find('.slideUl').css({
                 width: sliderUlWidth + 'vw',
                 marginLeft: -slideWidth + 'vw'
             });
 
-            obj.find('ul li:last-child').appendTo(obj.attr('id') + ' ul');
+            obj.find('.slideUl li:last-child').appendTo(obj.attr('id') + ' .slideUl');
 
         }
 
@@ -60,23 +107,23 @@ jQuery(document).ready(function () {
             startslide();
             startProgressbar();
         } else { // hade navigation buttons for 1 slide only
-            $(id + ' button.control_prev').hide();
-            $(id + ' button.control_next').hide();
+            $(id + ' .control_prev').hide();
+            $(id + ' .control_next').hide();
         }
 
 
 
 
         function moveLeft() {
-            $(id + ' ul').css({
+            $(id + ' .slideUl').css({
                 transition: "1s",
                 transform: "translateX(" + slideWidth + "vw)"
             });
 
             setTimeout(function () {
 
-                $(id + ' ul li:last-child').prependTo(id + ' ul');
-                $(id + ' ul').css({
+                $(id + ' .slideUl li:last-child').prependTo(id + ' .slideUl');
+                $(id + ' .slideUl').css({
                     transition: "none",
                     transform: "translateX(" + 0 + "vw)"
                 });
@@ -84,20 +131,31 @@ jQuery(document).ready(function () {
                 $('li.actslide').prev().addClass('actslide').next().removeClass('actslide');
             }, 1000);
 
+            clicked = clicked - 1;
+
+            if (clicked > 0) {
+                $('.carousel-buttons').removeClass("active");
+                $('#carousel' + clicked).addClass("active");
+            } else {
+                clicked = slideCount;
+                $('.carousel-buttons').removeClass("active");
+                $('#carousel' + clicked).addClass("active");
+            }
+
         }
 
         function moveRight2() { // fix for only 2 slades
-            $(id + ' ul li:first-child').appendTo(id + ' ul');
+            $(id + ' .slideUl li:first-child').appendTo(id + ' .slideUl');
 
 
-            $(id + ' ul').css({
+            $(id + ' .slideUl').css({
                 transition: "none",
                 transform: "translateX(100vw)"
             }).delay();
 
             setTimeout(function () {
 
-                $(id + ' ul').css({
+                $(id + ' .slideUl').css({
                     transition: "1s",
                     transform: "translateX(0vw)"
                 });
@@ -106,7 +164,7 @@ jQuery(document).ready(function () {
             }, 100, setTimeout(function () {
 
 
-                $(id + ' ul').css({
+                $(id + ' .slideUl').css({
                     transition: "none",
                     transform: "translateX(0vw)"
                 });
@@ -121,32 +179,42 @@ jQuery(document).ready(function () {
 
         function moveRight() {
             if (slideCount > 2) {
-                $(id + ' ul').css({
+                $(id + ' .slideUl').css({
                     transition: "1s",
                     transform: "translateX(" + (-1) * slideWidth + "vw)"
                 });
 
                 setTimeout(function () {
 
-                    $(id + ' ul li:first-child').appendTo(id + ' ul');
-                    $(id + ' ul').css({
+                    $(id + ' .slideUl li:first-child').appendTo(id + ' .slideUl');
+                    $(id + ' .slideUl').css({
                         transition: "none",
                         transform: "translateX(" + 0 + "vw)"
                     });
 
                     $('li.actslide').next().addClass('actslide').prev().removeClass('actslide');
                 }, 1000);
+                clicked = clicked + 1;
+
+                if (clicked <= 3) {
+                    $('.carousel-buttons').removeClass("active");
+                    $('#carousel' + clicked).addClass("active");
+                } else {
+                    clicked = 1;
+                    $('.carousel-buttons').removeClass("active");
+                    $('#carousel' + clicked).addClass("active");
+                }
             } else {
                 moveRight2();
             }
         }
 
-        $(id + ' button.control_prev').click(function () {
+        $(id + ' .control_prev').click(function () {
             moveLeft();
             startProgressbar();
         });
 
-        $(id + ' button.control_next').click(function () {
+        $(id + ' .control_next').click(function () {
 
             moveRight();
 

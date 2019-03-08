@@ -6,9 +6,10 @@
     position: relative;
     overflow: hidden;
     width: 100% !important;
+    top: -48px;
 }
 
-#slider ul {
+#slider .slideUl {
     position: relative;
     margin: 0;
     padding: 0;
@@ -18,7 +19,7 @@
     list-style: none;
 }
 
-#slider ul li {
+#slider .slideUl li {
     position: relative;
     display: block;
     float: left;
@@ -29,67 +30,78 @@
     text-align: center;
 }
 
-#slider ul li .slide {
+#slider .slideUl li .slide {
     background-size: cover;
     height: 600px;
 }
 
-#slider ul li .slide1 {
+#slider .slideUl li .slide1 {
     background-image: url('../img/spiderman-lego.jpg');
 }
 
-#slider ul li .slide2 {
+#slider .slideUl li .slide2 {
     background-image: url('../img/bureau-lego.jpg');
     background-position-y: 77%;
 }
 
-#slider ul li .slide3 {
+#slider .slideUl li .slide3 {
     background-image: url('../img/rando-lego.jpg');
     background-position-y: 27%;
 }
 
-
-
-button.control_prev,
-button.control_next {
+section.slider .control {
+    width: 20px;
+    height: 20px;
     position: absolute;
-    top: 50%;
-    z-index: 10;
-    display: block;
-    border: none;
-    width: 2em;
-    height: 2em;
-    line-height: 1.9em;
-    background: rgba(#fff, .30);
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 2rem;
-    opacity: 0.8;
+    top: 72%;
+    z-index: 5;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
     cursor: pointer;
+    transition: border-color 0.3s ease-out;
+}
+
+section.slider .control:hover {
+    border-color: #d01012;
+}
+
+section.slider .control_next {
+    right: 40px;
+    transform: rotate(45deg);
+}
+
+section.slider .control_prev {
+    left: 40px;
+    transform: rotate(225deg);
+}
+
+section.slider .dots {
+    width: 100%;
+    position: absolute;
+    bottom: 0%;
+    z-index: 4;
+    padding: 0;
+    text-align: center;
+}
+
+section.slider .dots li {
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    margin: 5px;
+    background: #fff;
+    list-style-type: none;
     border-radius: 50%;
-    transform: translateY(-50%);
+    cursor: pointer;
+    transition: background 0.3s ease-out;
 }
 
-button.control_prev:hover,
-button.control_next:hover {
-    opacity: 1;
-    -webkit-transition: all 0.2s ease;
+section.slider .dots li.active {
+    background: #d01012;
 }
 
-button.control_prev:focus,
-button.control_next:focus {
-    outline: none;
-    border: 1px rgba(255, 255, 255, .5) solid;
-}
-
-button.control_prev {
-    left: 2rem;
-}
-
-button.control_next {
-    right: 2rem;
+section.slider .dots li:hover {
+    background: #d01012;
 }
 
 .progress {

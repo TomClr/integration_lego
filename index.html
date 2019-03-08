@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/slider.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
         crossorigin="anonymous">
     <title>Intégration Lego</title>
@@ -72,15 +73,43 @@
                 arcu, <strong>ac laoreet justo aliquet non</strong>. Sed ut perspiciatis unde omnis iste natus error
                 sit voluptatem accusantium, illo inventore veritatis et quasi architecto <strong>beatae vitae dicta
                     sunt explicabo</strong>.</p>
-            <img src="./img/ironman-lego.png" alt="" height="145">
+            <img src="./img/ironman-lego.png" alt="" height="145" style="z-index:9999">
         </div>
     </section>
 
-    <section class="slider">
+    <section class="slider" id="slider" data-width="100">
+        <!-- <button class="control_next">&rarr;</button>
+        <button class="control_prev">&larr;</button> -->
+        <div class="control control_next"></div>
+        <div class="control control_prev"></div>
+        <!-- <div class="carousel-buttons-container">
+            <ul class="dots"></ul>
+        </div> -->
+        <ul class="slideUl">
+            <li class="actslide">
+                <div class="slide slide1"></div>
+            </li>
+            <li>
+                <div class="slide slide2"></div>
+            </li>
+            <li>
+                <div class="slide slide3"></div>
+            </li>
+        </ul>
+        <div class="progress">
+            <div class="bar"></div>
+        </div>
+
+    </section>
+
+    <!-- <section class="slider">
+        <div class="progress">
+            <div class="bar"></div>
+        </div>
         <div class="diapo diapo-1"></div>
         <div class="diapo diapo-2"></div>
         <div class="diapo diapo-3"></div>
-    </section>
+    </section> -->
 
     <section class="block-3">
         <div class="titre container">
@@ -88,8 +117,7 @@
         </div>
         <div id="column" class="container">
             <div id="col-1">
-                <img src="./img/lego-enjoy.png"
-                    alt="" height="195">
+                <img src="./img/lego-enjoy.png" alt="" height="195">
                 <h3>Jouer</h3>
                 <p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
             </div>
@@ -157,8 +185,7 @@
             </div>
             <div class="row3">
                 <div class="indiana">
-                    <img src="./img/indiana-jones-lego.png"
-                        alt="" height="67px">
+                    <img src="./img/indiana-jones-lego.png" alt="" height="67px">
                 </div>
                 <div class="harry">
                     <img src="./img/harry-potter-logo-lego.png" alt="" height="93">
@@ -184,8 +211,7 @@
                 <img src="./img/batman-logo-lego.png" alt="" height="155">
             </div>
             <div class="indiana">
-                <img src="./img/indiana-jones-lego.png" alt=""
-                    height="67px">
+                <img src="./img/indiana-jones-lego.png" alt="" height="67px">
             </div>
             <div class="harry">
                 <img src="./img/harry-potter-logo-lego.png" alt="" height="93">
@@ -295,6 +321,7 @@
         crossorigin="anonymous">
     </script>
     <script src="./js/scripts.js"></script>
+    <script src="./js/slider.js"></script>
 </body>
 
 </html>
