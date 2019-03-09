@@ -234,7 +234,7 @@
                 <ul>
                     <li style="list-style-position: outside;"><i class="fas fa-home"></i>100 Avenue Willy Brandt</li>
                     <li style="padding-left: 39px;">59777 Lille</li>
-                    <li><i class="fas fa-envelope"></i>contact@lego.com</li>
+                    <li><i class="fas fa-envelope"></i><a href="mailto:contact@lego.com">contact@lego.com</a></li>
                     <li><i class="fas fa-phone"></i>03 28 04 98 21</li>
                 </ul>
             </div>
@@ -251,26 +251,27 @@
                     <label for="mlle">Mlle</label>
 
                     <div>
-                        <input type="text" placeholder="Votre nom">
+                        <input type="text" placeholder="Votre nom*" id="nom" class="champ">
                         <label for="nom" class="hide">Nom</label>
+                        <span class="erreur erreur-chiffre">Votre nom ne peut pas contenir de chiffre</span>
                     </div>
                     <div>
-                        <input type="text" placeholder="Sujet">
+                        <input type="text" placeholder="Sujet" id="sujet">
                         <label for="sujet" class="hide">Sujet</label>
                     </div>
                     <div>
-                        <input type="text" placeholder="Email">
+                        <input type="text" placeholder="Email*" id="email" class="champ">
                         <label for="email" class="hide">Email</label>
+                        <span class="erreur erreur-mail">L'adresse e-mail est invalide</span>
                     </div>
                     <div>
-                        <textarea name="message" id="message" placeholder="Votre message"></textarea>
+                        <textarea name="message" id="message" placeholder="Votre message*" class="champ"></textarea>
                         <label for="message" class="hide">Message</label>
+                        <span class="erreur"></span>
                     </div>
-                    <input type="submit" value="Envoyer">
+                    <span class="erreur erreur-rempli">Erreur, les champs marqués d'un * doivent être remplis</span>
+                    <input type="submit" value="Envoyer" id="envoi">
                     
-
-
-
                 </form>
             </div>
         </div>
@@ -319,6 +320,7 @@
     </script>
     <script src="./js/scripts.js"></script>
     <script src="./js/slider.js"></script>
+    <script src="./js/form-validator.js"></script>
 </body>
 
 </html>
