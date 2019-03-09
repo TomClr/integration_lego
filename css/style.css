@@ -14,9 +14,25 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+
+/* Sticky Footer */
+.wrapper {
+    min-height: 47%;
+    margin-bottom: -100px;
+}
+
+.wrapper:after {
+    content: "";
+    display: block;
+}
+
+.wrapper:after {
+    height: 100px;
 }
 
 .container {
@@ -53,6 +69,11 @@ h2 {
     font-family: "KGSecond";
     color: #d01012;
     font-size: 36px;
+}
+
+h1 span,
+h2 span {
+    padding: 0 18px;
 }
 
 h3 {
@@ -214,7 +235,7 @@ h2:after {
     .nav .menu {
         flex-flow: column wrap;
         align-items: normal;
-        background-color: #f3f3f3;
+
     }
 
     .menu-disabled {
@@ -270,6 +291,7 @@ h2:after {
     background-color: #D41618;
     /* width: inherit;
     margin: auto; */
+    margin-bottom: -26px;
 }
 
 .section-1 .titre h1 {
@@ -282,15 +304,35 @@ h2:after {
     display: flex;
     justify-content: space-between;
     margin-top: -61px;
+    padding-bottom: 0px;
 }
 
 .section-1 .sous-titre p {
     color: #fff;
     width: 79%;
+    margin-bottom: 0;
 }
 
 .section-1 .sous-titre img {
     margin-right: 15px;
+}
+
+@media screen and (max-width: 715px) {
+    .section-1 .sous-titre {
+        display: block;
+        text-align: center;
+    }
+
+    .section-1 .sous-titre p {
+        width: 100%;
+        padding-bottom: 35px;
+    }
+
+    .section-1 .sous-titre img {
+        margin-right: 15px;
+        position: relative;
+        top: 3px;
+    }
 }
 
 /* -----------------------------
@@ -298,33 +340,22 @@ h2:after {
    -----------------------------
 */
 
-/* section.slider {
-    background: url('../img/spiderman-lego.jpg');
-    height: 693px;
-    margin-top: -41px;
-} */
-
-/* section.slider .progress {
+section.slider .progress {
     z-index: 9998;
-    position: absolute;
+    position: relative;
     background: rgba(255, 255, 255, .3);
     height: 0.5rem;
     width: 100%;
-    bottom: 564px;
     border-top: 1px rgba(0, 0, 0, .15) solid;
 }
 
 section.slider .progress .bar {
     height: 100%;
     width: 0%;
-    background: #e9e921;
+    background: #fff;
 }
 
-section.slider {
-    background-color: #000;
-}
-
-section.slider. .diapo {
+section.slider .bg {
     background-color: #000;
 }
 
@@ -332,21 +363,20 @@ section.slider .diapo-1 {
     background: url('../img/spiderman-lego.jpg');
     background-size: cover;
     height: 693px;
-    margin-top: -41px;
 }
 
 section.slider .diapo-2 {
     background: url('../img/rando-lego.jpg');
     background-size: cover;
+    background-position-y: 35%;
     height: 693px;
-    margin-top: -41px;
 }
 
 section.slider .diapo-3 {
     background: url('../img/bureau-lego.jpg');
     background-size: cover;
+    background-position-y: 70%;
     height: 693px;
-    margin-top: -41px;
 }
 
 section.slider .arrow {
@@ -402,7 +432,32 @@ section.slider .dots li.active {
 
 section.slider .dots li:hover {
     background: #d01012;
-} */
+}
+
+@media screen and (max-width: 715px) {
+    section.slider .arrow {
+        position: relative;
+    }
+
+    section.slider .arrow:hover {
+        border-color: #d01012;
+    }
+
+    section.slider .arrow-next {
+        top: -25.25em;
+        left: 90%;
+    }
+
+    section.slider .arrow-prev {
+        top: -24em;
+        left: 6%;
+    }
+
+    section.slider .dots {
+        position: relative;
+        bottom: 8em;
+    }
+}
 
 /* -----------------------------
    -------- COL-3 --------------
@@ -415,6 +470,12 @@ section #column {
     align-content: center;
     align-items: center;
     flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 453px) {
+    section.block-3 h2 span {
+        padding: 0;
+    }
 }
 
 section #column p {
@@ -444,6 +505,17 @@ section #column p {
     }
 }
 
+@media screen and (max-width: 715px) {
+    section #column {
+        display: block;
+    }
+
+    #col-1,
+    #col-2 {
+        padding-bottom: 55px;
+    }
+}
+
 /* -----------------------------
    -------- YOUTUBE ------------
    -----------------------------
@@ -456,6 +528,7 @@ section.youtube {
 .video {
     max-width: 1100px;
     margin: auto;
+    margin-bottom: 50px;
 }
 
 .video div {
@@ -507,6 +580,7 @@ section.paralax p {
 
 section.paralax .btn {
     text-align: center;
+    padding-bottom: 24px;
 }
 
 .btn button,
@@ -578,6 +652,12 @@ section.paralax .btn {
     section .mosaic-responsive .row4 {
         display: block !important;
         text-align: center;
+    }
+}
+
+@media screen and (min-width: 958px) {
+    section.mosaique {
+        margin-bottom: -18em;
     }
 }
 
@@ -724,12 +804,6 @@ section.paralax .btn {
    -----------------------------
 */
 
-@media screen and (min-width: 958px) {
-    footer {
-        margin-top: -266px;
-    }
-}
-
 footer {
     background: url('../img/footer-background.png');
 }
@@ -767,6 +841,17 @@ footer .footer {
     flex-basis: 34%;
 }
 
+@media screen and (max-width: 1000px) {
+    footer .footer {
+        display: block;
+        padding-left: 25px;
+    }
+
+    form input[type="submit"] {
+        float: none!important;
+    }
+}
+
 .footer-inf {
     background-color: #ffff3c;
 }
@@ -774,16 +859,33 @@ footer .footer {
 .footer-inf .inf {
     display: flex;
     justify-content: space-between;
-    padding: 0;
+    padding: 0 26px;
+}
+
+@media screen and (max-width: 715px) {
+
+    .footer-inf {
+        padding-top: 1px;
+    }
+
+    .footer-inf .inf {
+        display: block;
+        text-align: center;
+    }
+
+    .social {
+        margin-bottom: 13px;
+    }
 }
 
 .footer-inf .inf p {
     font-weight: 500;
 }
 
-.footer-inf ul li {
+.footer-inf ul {
     display: inline;
     list-style-type: none;
+    padding: 0;
 }
 
 .social {
@@ -792,9 +894,13 @@ footer .footer {
     width: 33px;
     background-color: red;
     border-radius: 50%;
-    margin-right: 15px;
+    /* margin-right: 15px; */
     text-align: center;
     padding-top: 5px;
+}
+
+.social:not(.google) {
+    margin-right: 15px;
 }
 
 .social:hover {
