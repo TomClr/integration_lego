@@ -1,10 +1,45 @@
-# Test technique d'intégration pour une entreprise
+<style>
 
-Le test d'intégration est disponible sous l'url suivante : https://app.thomas-claireau.fr/lego-integration ou en utilisant l'archive envoyée par email (ou les fichiers sur GitHub).
+h2 {
+    color: #2DA6FF;
+}
+
+h3 {
+    text-decoration: underline;
+}
+
+a {
+    color: orange;
+}
+
+a:hover {
+    color: orange;
+}
+
+</style>
+
+# Test technique d'intégration
+
+Le test d'intégration est disponible sous l'url suivante : [https://app.thomas-claireau.fr/lego-integration](https://app.thomas-claireau.fr/lego-integration) ou en utilisant l'archive envoyée par email (ou les fichiers sur GitHub).
+
+## Sommaire
+
+1. [Preloader](#preloader)
+2. [CSS relatif à la page entière](#css-page-entiere)
+3. [Header & Menu](#header)
+4. [Headings](#headings)
+5. [Slider](#slider)
+6. [Bloc 3 colonnes](#bloc-3-colonnes)
+7. [Iframe Youtube](#iframe)
+8. [Bloc "Parallax" & boutons](#paralax)
+9. [Mosaïque](#mosaique)
+10. [Footer](#footer)
 
 Dans ce readme, je vais revenir globalement sur tous mes choix techniques d'intégration.
 
 Si vous voulez davantage de précisions ou d'autres questions concernant des choix techniques que je n'ai pas abordés, n'hésitez pas à me contacter !
+
+<a id="preloader"></a>
 
 ## Preloader
 
@@ -16,7 +51,9 @@ Ce preloader a été réalisé en 3 étapes :
 2) Ajout de code CSS spécifique à cette div afin qu'elle soit en pleine largeur / hauteur. Son `z-index` doit être plus élevé que n'importe quel autre élément de la page afin qu'elle passe au dessus de tous les éléments.
 3) Ajout d'un code JavaScript spécifiant qu'au chargement complet de la page, la div `preloader` disparait progressivement (`fadeOut`).
 
-## Code CSS relatif à la page entière
+<a id="css-page-entiere"></a>
+
+## CSS relatif à la page entière
 
 Afin de respecter la compatibilité avec tous les navigateurs, j'ai effectué un reset des marges sur les balises html et body : 
 
@@ -27,22 +64,24 @@ html, body {
 }
 ````
 
-Afin de respecter la largeur du contenu indiqué dans la maquette psd, j'ai créé une class `container` avec les propriétés css suivantes :
+Et pour respecter aussi la largeur du contenu indiquée dans la maquette psd, j'ai créé une classe `container` avec les propriétés css suivantes :
 
 ````css
 .container {
     width: 1220px;
-    margin: 0 auto;
+    margin: 0 auto; /* alignement du contenu au centre */
 }
 ````
 
-## Header & Menu (durée ≈ 2h)
+<a id="header"></a>
+
+## Header & Menu (durée ≈ 2h) <a id="header"></a>
 
 Le logo est bien intégré en SVG grâce à la balise `<img>`. 
 
-Le header, comme l'ensemble de la page, a été mis en page grâce à Flexbox. La partie responsive de la page a elle aussi été réalisée avec Flexbox.
+Le header a été mis en page grâce à Flexbox. La partie responsive de la page a elle aussi été réalisée avec Flexbox.
 
-L'effet au survol des menu est entièrement géré par le CSS grâce au pseudo-element `hover`.
+L'effet au survol des menu est entièrement géré par le CSS grâce au pseudo-élément `hover`.
 
 Concernant les effets au survol, j'ai prévu une animation simple en css : 
 
@@ -60,21 +99,25 @@ Concernant les effets au survol, j'ai prévu une animation simple en css :
 
 ### *Responsive*
 
-En dessous de 936px, le menu actuel est remplacé par un menu "responsive" qui s'affiche en cliquant sur un icone de navigation. Le tout est géré en CSS grâce aux media queries ainsi qu'avec du javascript pour ouvrir le menu au click sur l'icone de navigation
+En dessous de 936px de largeur, le menu actuel est remplacé par un menu "responsive" qui s'affiche en cliquant sur un icone de navigation. Le tout est géré en CSS grâce aux media queries ainsi qu'avec du javascript pour ouvrir le menu au click sur l'icone de navigation
+
+<a id="headings"></a>
 
 ## Headings (durée ≈ 30min)
 
 Les titres h1 et h2 sont pourvus de deux lignes dont la largeur s'adapte en fonction de la taille de l'écran ainsi qu'en fonction de la taille qu'occupe le texte.
 
-Cela été réalisé grâce aux pseudo-éléments `before` et `after` et à la propriété css `display: table` que j'ai choisi pour sa compatibilité avec la plupart des navigateurs.
+Cela a été réalisé grâce aux pseudo-éléments `before` et `after` et à la propriété css `display: table` que j'ai choisi pour sa compatibilité avec la plupart des navigateurs.
 
-Pour éviter de me répéter au niveau du code et aussi parce que les titres h2 étaient différents sur la page, j'ai choisi d'utiliser une classe `yellow` pour les titres jaunes le sélecteur `h2` pour les autres (rouge avec barre en pointillés jaunes)
+Pour éviter de me répéter au niveau du code et aussi parce que les titres h2 étaient différents sur la page, j'ai choisi d'utiliser une classe `yellow` pour les titres jaunes et le sélecteur `h2` pour les autres (rouge avec barre en pointillés jaunes)
+
+<a id="slider"></a>
 
 ## Slider (durée ≈ 5h)
 
-Cela a été la partie la plus compliqué du test d'intégration.
+Cela a été la partie la plus compliquée du test d'intégration.
 
-J'ai réalisé facilement le slider en JavaScript (+ jQuery), mais l'intégration d'une progress bar pour informer l'utilisateur du temps d'affichages de l'item en cours m'a posé quelques soucis.
+J'ai réalisé facilement le slider en JavaScript (+ jQuery), mais l'intégration d'une progress bar pour informer l'utilisateur du temps d'affichage de l'item en cours m'a posé quelques soucis.
 
 Après des recherches, j'ai trouvé sur [CodePen](https://codepen.io/yhunter/pen/rwmVro) un exemple de slider incluant une progress bar dont je me suis inspiré.
 
@@ -90,7 +133,7 @@ Chaque item est dans une div portant la classe commune `diapo` et la classe `dia
 <div class="diapo diapo-3"></div>
 ````
 
-Les images sont ensuite rajouté en CSS grâce à la propriété background. Voici un exemple pour la première div de l'exemple précédent :
+Les images sont ensuite rajoutées en CSS grâce à la propriété background. Voici un exemple pour la première div de l'exemple précédent :
 
 ````css
 .diapo-1 {
@@ -106,7 +149,7 @@ Le code HTML des deux flèches est lui aussi ajouté en JavaScript (de façon à
 
 > Tout le code JS relatif au slider est dans un fichier spécifique : slider.js
 
-Pour afficher les flèches, le code intégre une condition : *Si le nombre de diapo est supérieur à 1, les flèches sont ajoutées*. Si la condition n'est pas remplie, les flèches n'apparaissent pas.
+Pour afficher les flèches, le code intègre une condition : *Si le nombre de diapo est supérieur à 1, les flèches sont ajoutées*. Si la condition n'est pas remplie, les flèches n'apparaissent pas.
 
 Dans cette même condition, vous pouvez voir l'appel à la fonction `startProgressbar()` qui s'occupe d'afficher la barre de progression. Si la condition précédente n'est pas remplie, la progress bar ne s'affiche donc pas.
 
@@ -116,8 +159,8 @@ Si le click est détecté, la fonction associée fait plusieurs choses :
 
 #### **Sur la flèche de droite :**
 
-- On incrémente de 1 une valeur `i` initialement à zéro qui va nous servir à sélectionner l'image suivante du slider.
-- Si la valeur de i est inférieure ou égale au nombre d'images dans le slider, on décide de cacher toutes les images sauf celle sélectionné grâce à la fonction JS `eq()`. Voici un exemple :
+- On incrémente de 1 une valeur `i` initialement à 0 qui va nous servir à sélectionner l'image suivante du slider.
+- Si la valeur de i est inférieure ou égale au nombre d'images dans le slider, on décide de cacher toutes les images sauf celle sélectionnée grâce à la fonction JS `eq()`. Voici un exemple :
 
 ````javascript
 $img.css('display', 'none');
@@ -125,12 +168,12 @@ $currentImg = $img.eq(i);
 $currentImg.fadeIn("slow");
 ````
 
-- Sinon, si la valeur de i est supérieur au nombre d'image dans le slider, on réinitialise la valeur de i à 0 puis on affiche l'image comme précédemment.
+- Sinon, si la valeur de i est supérieure au nombre d'image dans le slider, on réinitialise la valeur de i à 0 puis on affiche l'image comme précédemment.
 
 #### **Sur la flèche de gauche :**
 
 - On décrémente de 1 une valeur `i` initialement à zéro qui va nous servir à sélectionner l'image suivante du slider.
-- Si la valeur de i est supérieur ou égal à 0, on décide de cacher toutes les images sauf celle sélectionné grâce à la fonction JS `eq()`. Voici un exemple :
+- Si la valeur de i est supérieure ou égal à 0, on décide de cacher toutes les images sauf celle sélectionnée grâce à la fonction JS `eq()`. Voici un exemple :
 
 ````javascript
 $img.css('display', 'none');
@@ -143,7 +186,7 @@ $currentImg.fadeIn("slow");
 
 ### *Navigation d'un item à l'autre via les dots en bas*
 
-Tout d'abord, il est nécessaire de pouvoir changer dynamiquement le nombre de dots en fonction du nombre d'image dans le slider.
+Tout d'abord, il est nécessaire de pouvoir changer dynamiquement le nombre de dots en fonction du nombre d'images dans le slider.
 
 J'ai réalisé ceci grâce à une boucle for et à une variable `addId` initialisée à 1. 
 
@@ -151,7 +194,7 @@ Tout comme les flèches, les dots sont rajoutés via JavaScript à la page.
 
 La balise `ul` (parente des balises `li` qui représente les dots) est soumise à la même condition que les flèches. Elle ne s'affichera pas sur la page si le slider ne comporte qu'une image.
 
-Ensuite, chaque balise `li` est ajouté dynamiquement en fonction du nombre d'item du slider, grâce à une boucle `for`. De plus, chaque balise `li` possède un identifiant unique de la forme `carousel-x` où x est le numéro du dot (qui est le même que l'image en cours d'affichage sur le slider). Voici la boucle for :
+Ensuite, chaque balise `li` est ajoutée dynamiquement en fonction du nombre d'item du slider, grâce à une boucle `for`. De plus, chaque balise `li` possède un identifiant unique de la forme `carousel-x` où x est le numéro du dot (qui est le même que l'image en cours d'affichage sur le slider). Voici la boucle for :
 
 ````javascript
 let addId = 1;
@@ -161,29 +204,27 @@ for (let a = 0; a <= indexImg; a++) {
 }
 ````
 
-Grâce au système d'identifiant unique associé au numéro de l'image, chaque dot est cliquable et renvoit vers l'image sélectionnée.
+Grâce au système d'identifiant unique associé au numéro de l'image, chaque dot est cliquable et renvoi vers l'image sélectionnée.
 
 Pour faire ceci, plusieurs étapes : 
 
 1) Je récupère l'identifiant unique de chaque dot avec la fonction `attr()`
 2) J'utilise la fonction `split()` pour transformer l'id en un tableau de sous-chaine.
 3) Cela me permet ensuite de sélectionner seulement le numéro x, comme je le ferais avec un tableau
-4) Il suffit ensuite de procéder comme avec les flèches et de sélectionner l'image à affiché avec `eq()`. Seule différence : il faut enlever 1 au numéro récupéré à l'étape 3 car la fonction `eq()` récupère les images à partir du numéro d'index 0 :
+4) Il suffit ensuite de procéder comme avec les flèches et de sélectionner l'image à afficher avec `eq()`. Seule différence : il faut soustraire 1 au numéro récupéré à l'étape 3 car la fonction `eq()` récupère les images à partir du numéro d'index 0 :
   - 0 : image n°1
   - 1 : image n°2
   - ...
 
 ### *Durée d'affichage d'un item et progress bar*
 
-function slideImg() + progress bar connecté + percentTime = 0
-
 Cette partie a été compliquée pour moi car j'avais commencé à construire mon code autour de la fonction `slideImg()` qui s'occupait d'activer le défilement automatique (sans progress bar).
 
-En implémentant une progress bar, cette dernière devient une sorte de "controle" qui décide de faire défiler les images ou non.
+En implémentant une progress bar, cette dernière devient une sorte de "contrôle" qui décide de faire défiler les images ou non.
 
-J'ai donc changé mon code de cette facon :
+J'ai donc changé mon code de cette façon :
 
-La fonction `startProgressBar` permet d'activer le défilement automatique avec une durée d'affichage de 4 secondes par slide.
+La fonction `startProgressBar()` permet d'activer le défilement automatique avec une durée d'affichage de 4 secondes par slide.
 
 Du coté HTML, j'ai intégré une div avec la classe `progress`, parente d'une div avec la classe `bar`, initialement à `width: 0%`.
 
@@ -193,41 +234,44 @@ Pour rendre la progression de la bar fluide, je me suis inspiré de l'exemple su
 
 Je l'ai modifié pour que la progression soit égale à 4 secondes. Explication :
 
-- La fonction qui englobe tout le code du slider demande une valeur `timer` : c'est une valeur en miliseconde qui indique l'interval de répétition de la fonction `interval()`.
-- La fonction `interval()` se charge donc d'incrémenter de 0.5% la largeur de la bar toutes les 20 milisecondes. On arrive donc à 100% au bout de 4 secondes.
+- La fonction qui englobe tout le code du slider demande une valeur `timer` : c'est une valeur en milliseconde qui indique l'intervalle de répétition de la fonction `interval()`. Plus la valeur `timer` est élevée, moins la progress bar est fluide, et inversement.
+- La fonction `interval()` se charge donc d'incrémenter de 0.5% la largeur de la bar toutes les 20 millisecondes. On arrive donc à 100% au bout de 4 secondes.
 
 Enfin, la progress bar doit se réinitialiser (revenir à une largeur de 0%) à :
-- chaque clique sur une des flèches de défilement
-- chaque clique sur un dot
+- chaque click sur une des flèches de défilement
+- chaque click sur un dot
 - chaque fois qu'une image défile automatiquement
 
-Pour faire ceci, à chaque évènement click sur les flèches ou les dots, ainsi que sur chaque défilement en automatique, je fais appel à la fonction `startProgressbar` qui fait deux choses :
+Pour faire ceci, à chaque évènement click sur les flèches ou les dots, ainsi que sur chaque défilement en automatique, je fais appel à la fonction `startProgressbar()` qui fait deux choses :
 
-1) Appel à la fonction `resetProgressbar` qui remet la largeur de la bar à 0% et stoppe le setInterval
-2) Relance le `setInterval` qui incrémente de 0.5% la largeur de la bar.
+1) Appel à la fonction `resetProgressbar` qui remet la largeur de la bar à 0% et stoppe le `setInterval()`
+2) Relance le `setInterval()` qui incrémente de 0.5% la largeur de la bar, toutes les 20 millisecondes.
 
+<a id="bloc-3-colonnes"></a>
 
 ## Bloc 3 colonnes (durée ≈ 1h)
 
-Les 3 blocs de largeur égale ont été mis en page avec flexbox.
+Les 3 blocs de largeurs égales ont été mis en page avec Flexbox.
 
 Les traits de séparation entre les images ont été réalisés avec le pseudo-élément `after`.
 
-Pour coller le plus fidèlement à la maquette, j'ai choisi de garder les images déja présentes et d'intégrer les animations qui étaient proposées dans les exemples.
+Pour coller le plus fidèlement possible à la maquette, j'ai choisi de garder les images déjà présentes et d'intégrer les animations qui étaient proposées dans les exemples.
 
 Pour chaque image, j'ai recréé une deuxième image légèrement différente :
 
 - Image n°1 : j'ai repris la brique de Lego qui sourit, et j'ai changé le sourire par un sourire plus grand
-- Image n°2 : j'ai empiler les briques sur photoshop
+- Image n°2 : j'ai empilé les briques sur Photoshop
 - Image n°3 : j'ai repris le bonhomme Lego, et je lui fait lever le bras droit
 
-Au survol de chaque bloc, un script jQuery avec une fonction `animImg()` s'enclenche et permet de remplacer l'image par celle modifiée. Lorsqu'on quitte le survol, l'image 1 revient à la même place.
+Au survol de chaque bloc, un script jQuery avec une fonction `animImg()` se déclenche et permet de remplacer l'image par celle modifiée. Lorsqu'on quitte le survol, l'image 1 revient à la même place.
+
+<a id="iframe"></a>
 
 ## Iframe Youtube (durée ≈ 20min)
 
 J'ai encadré l'iframe YouTube dans une div portant la classe `video` qui m'a permis de fixer une largeur max de 1100px ainsi qu'un `margin:auto` pour centrer la vidéo.
 
-A partir de là, quand on redimensionne, on perd le ratio d'origine et des bordures noires apparaissent quand on réduit la taille de la fenetre.
+A partir de là, quand on redimensionne, on perd le ratio d'origine et des bordures noires apparaissent quand on réduit la taille de la fenêtre.
 
 Pour éviter cela, il faut encadrer l'iframe dans une deuxième div avec le CSS suivant :
 
@@ -252,17 +296,21 @@ Puis de rajouter les règles css suivantes directement à l'iframe :
 }
 ````
 
-La position `absolute` de l'iframe permet de la sortir du flux de la page et le fait de rajouter une width et une height de 100% permet d'adapter automatiquement la taille de la vidéo en fonction de la taille de la fenetre, exactement le même comportement qu'une image.
+La position `absolute` de l'iframe permet de la sortir du flux de la page et le fait de rajouter une largeur et une hauteur de 100% permet d'adapter automatiquement la taille de la vidéo en fonction de la taille de la fenêtre, exactement comme le comportement d'une image.
+
+<a id="paralax"></a>
 
 ## Bloc "Parallax" & boutons (durée ≈ 40min)
 
-Tous les boutons (button, a, input) possède des styles interchangeables.
+Tous les boutons (button, a, input) possèdent des styles interchangeables.
 
 Le parallax sur l'image de fond a été créé en trois étapes :
 
-- HTML : Ajout d'une classe `paralax` sur la balise section
-- CSS : ajout de l'image grâce à la propriété `background`. L'image de fond est assombrie avec `linear-gradient`
-- Il suffit ensuite de définir la règle css `background-attachment` sur `fixed` pour fixer l'image pendant le scroll
+1) Ajout d'une classe `paralax` sur la balise section
+2) Ajout de l'image grâce à la propriété `background`. L'image de fond est assombrie avec `linear-gradient`
+3) Il suffit ensuite de définir la règle css `background-attachment` sur `fixed` pour fixer l'image pendant le scroll
+
+<a id="mosaique"></a>
 
 ## Mosaïque (durée ≈ 1h30)
 
@@ -270,16 +318,18 @@ Chaque logo de licence est entouré d'une div portant une classe du nom de la li
 
 Pour des raisons de simplicité, les briques grisées derrière les logos sont tirées de la maquette directement (format png).
 
-Pour créer la mosaique, j'ai utilisé une nouvelle fois flexbox mais d'une manière différente. Conscient qu'il existe plusieurs façons de faire, j'ai tenté de faire au plus simple :
+Pour créer la mosaïque, j'ai utilisé une nouvelle fois Flexbox mais d'une manière différente. Conscient qu'il existe plusieurs façons de faire, j'ai tenté de faire au plus simple / efficace :
 
 - Les divs portant les classes `starwars` et `bigbang` sont entourées d'une div avec une classe `col1`, symbolisant la 1ère colonne
 - Les divs portant les classes `avenger` et `batman` sont entourées d'une div avec une classe `col2`, symbolisant la 2ème colonne
 - Les divs portant les classes `indiana` et `harry` sont entourées d'une div avec une classe `col3`, symbolisant la 3ème colonne
-- La div portant la classe `lord` et `avenger` est entourée d'une div avec une classe `col4`, symbolisant la 4ème colonne
+- La div portant la classe `lord` est entourée d'une div avec une classe `col4`, symbolisant la 4ème colonne
 
 Ensuite ces 4 divs (col1, col2...) sont mises en page grâce à FlexBox.
 
-Le rendu n'étant pas parfait, j'ai rectifié certains logos manuellement en css avec des règles commme `top` ou `left`.
+Le rendu n'étant pas parfaitement conforme à la maquette, j'ai rectifié certains logos manuellement en css avec des règles comme `top` ou `left`.
+
+<a id="footer"></a>
 
 ## Footer (durée ≈ 2h)
 
@@ -287,6 +337,6 @@ La disposition des 3 blocs du footer a été réalisée avec FlexBox.
 
 La validation du formulaire a été réalisée en JavaScript via le fichier `form-validator.js`
 
-J'ai d'abord vérifié chaque champ (nom, email et message) en écoutant la frappe du clavier avec `keyup`. Quand une des conditions n'étaient pas rempli par l'utilisateur, j'affiche un message d'erreur invitant l'utilisateur a validé le champs.
+J'ai d'abord vérifié chaque champ (nom, email et message) en écoutant la frappe du clavier avec `keyup()`. Quand une des conditions n'était pas remplie par l'utilisateur, j'affiche un message d'erreur invitant l'utilisateur a validé le champ.
 
-Ensuite, comme demandé, j'effectue toutes les vérifications demandées grâce à la fonction `check()` que j'appelle au submit du formulaire. Avant l'appel de cette fonction, j'annule l'envoi du formulaire grâce à `preventDefault()` pour rester en phase de test.
+Ensuite, j'effectue toutes les vérifications demandées grâce à la fonction `check()` que j'appelle au submit du formulaire. Avant l'appel de cette fonction, j'annule l'envoi du formulaire grâce à `preventDefault()` pour rester en phase de test.
