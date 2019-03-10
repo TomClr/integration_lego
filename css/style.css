@@ -10,6 +10,27 @@
         url("../font/KGSecondChancesSolid.ttf") format("truetype");
 }
 
+/* -----------------------------
+   -------- PRE LOADER ---------
+   -----------------------------
+*/
+
+.loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background: url('../img/loader.svg') center no-repeat #fff;
+    background-color: #fcfcfc;
+}
+
+/* -----------------------------
+   -------- BODY ---------------
+   -----------------------------
+*/
+
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -20,21 +41,6 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-}
-
-/* Sticky Footer */
-.wrapper {
-    min-height: 47%;
-    margin-bottom: -100px;
-}
-
-.wrapper:after {
-    content: "";
-    display: block;
-}
-
-.wrapper:after {
-    height: 100px;
 }
 
 .container {
@@ -58,7 +64,8 @@ a {
 p,
 footer ul li,
 input,
-textarea, label {
+textarea,
+label {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
 }
@@ -151,6 +158,7 @@ h2:after {
     margin: 0;
     padding: 0;
     list-style: none;
+    z-index: 99999;
 }
 
 .menu>li {
@@ -175,6 +183,10 @@ h2:after {
     display: block;
     text-align: center;
     text-decoration: none;
+}
+
+.nav>div>a:first-child {
+    padding: 0em;
 }
 
 .nav .menu {
@@ -311,7 +323,6 @@ h2:after {
         margin: 0;
     }
 
-
     .menu-responsive {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -357,8 +368,6 @@ h2:after {
 
 .section-1 {
     background-color: #D41618;
-    /* width: inherit;
-    margin: auto; */
     margin-bottom: -26px;
 }
 
@@ -469,7 +478,9 @@ section.slider .arrow:hover {
 }
 
 section.slider .arrow-next {
-    right: 40px;
+    position: relative;
+    top: -24.2em;
+    left: 97%;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }
@@ -478,12 +489,14 @@ section.slider .arrow-prev {
     left: 40px;
     -webkit-transform: rotate(225deg);
     transform: rotate(225deg);
+    position: relative;
+    top: -23em;
 }
 
 section.slider .dots {
     width: 100%;
-    position: absolute;
-    bottom: -12%;
+    position: relative;
+    top: -119px;
     z-index: 4;
     padding: 0;
     text-align: center;
@@ -528,17 +541,16 @@ section.slider .dots li:hover {
         top: -24em;
         left: 6%;
     }
-
-    section.slider .dots {
-        position: relative;
-        bottom: 8em;
-    }
 }
 
 /* -----------------------------
    -------- COL-3 --------------
    -----------------------------
 */
+
+section.block-3 {
+    margin-top: -50px;
+}
 
 section #column {
     display: -webkit-box;
@@ -627,6 +639,7 @@ section.youtube {
     left: 0;
     width: 100%;
     height: 100%;
+    border: none;
 }
 
 .intro #intro .video iframe,
@@ -699,6 +712,7 @@ section.paralax .btn {
     color: #fff;
     font-size: 20px;
     text-decoration: none;
+    display: inline-block;
 }
 
 .btn a:hover {
@@ -721,6 +735,15 @@ section.paralax .btn {
     background-color: #ffff3c;
     border-color: #ffff3c;
     color: #d01012;
+}
+
+@media screen and (max-width: 543px) {
+
+    .btn button,
+    .btn a,
+    .btn input {
+        width: 90%;
+    }
 }
 
 
@@ -800,6 +823,15 @@ section.paralax .btn {
 
     section .mosaic div {
         margin: 5px;
+        -webkit-transition: all 0.5s ease-out;
+        transition: all 0.5s ease-out;
+    }
+
+    section .mosaic div:hover {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        -webkit-transition: all 0.5s ease-out;
+        transition: all 0.5s ease-out;
     }
 
     .starwars {
@@ -900,6 +932,21 @@ section.paralax .btn {
    -------- FOOTER -------------
    -----------------------------
 */
+
+/* Sticky Footer */
+.wrapper {
+    min-height: 47%;
+    margin-bottom: -100px;
+}
+
+.wrapper:after {
+    content: "";
+    display: block;
+}
+
+.wrapper:after {
+    height: 100px;
+}
 
 footer {
     background: url('../img/footer-background.png');
@@ -1005,7 +1052,6 @@ footer .footer {
     width: 33px;
     background-color: red;
     border-radius: 50%;
-    /* margin-right: 15px; */
     text-align: center;
     padding-top: 5px;
     margin-top: 12px;
@@ -1022,7 +1068,7 @@ footer .footer {
     transition: all 0.4s ease-in-out;
 }
 
-.social li i {
+.social a i {
     color: #fff;
     font-weight: 600;
 }

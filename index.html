@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="./img/logo-lego.ico" />
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
         crossorigin="anonymous">
@@ -12,11 +13,12 @@
 </head>
 
 <body>
+    <div class="loader"></div>
     <div class="wrapper">
         <header class="container">
-            <nav class="nav" role="navigation">
+            <nav class="nav">
                 <div class="menu-responsive">
-                    <a href="#"><img src="./img/logo-lego.svg" alt="Logo de Lego" height="85px"></a>
+                    <a href="#"><img src="./img/logo-lego.svg" alt="Logo de Lego" height="85"></a>
                     <svg class="icon-menu" width="30px" height="30px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 4h30v4H0zM0 13h30v4H0zM0 22h30v4H0z"></path>
                     </svg>
@@ -76,7 +78,7 @@
                     error
                     sit voluptatem accusantium, illo inventore veritatis et quasi architecto <strong>beatae vitae dicta
                         sunt explicabo</strong>.</p>
-                <img src="./img/ironman-lego.png" alt="Figurine Iron Man Lego" height="145" style="z-index:9999">
+                <img class="iron-man" src="./img/ironman-lego.png" alt="Figurine Iron Man Lego" height="145" style="z-index:9999">
             </div>
         </section>
 
@@ -125,8 +127,8 @@
             </div>
             <div class="video container">
                 <div>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/zD3qvX4KQ2U" frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/zD3qvX4KQ2U" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                 </div>
 
             </div>
@@ -176,7 +178,7 @@
                 </div>
                 <div class="row3">
                     <div class="indiana">
-                        <img src="./img/indiana-jones-lego.png" alt="Logo Indiana Jones, licence de Lego" height="67px">
+                        <img src="./img/indiana-jones-lego.png" alt="Logo Indiana Jones, licence de Lego" height="67">
                     </div>
                     <div class="harry">
                         <img src="./img/harry-potter-logo-lego.png" alt="Logo Harry Potter, licence de Lego" height="93">
@@ -204,7 +206,7 @@
                     <img src="./img/batman-logo-lego.png" alt="Logo Batman, licence de Lego" height="155">
                 </div>
                 <div class="indiana">
-                    <img src="./img/indiana-jones-lego.png" alt="Logo Indiana Jones, licence de Lego" height="67px">
+                    <img src="./img/indiana-jones-lego.png" alt="Logo Indiana Jones, licence de Lego" height="67">
                 </div>
                 <div class="harry">
                     <img src="./img/harry-potter-logo-lego.png" alt="Logo Harry Potter, licence de Lego" height="93">
@@ -240,7 +242,7 @@
             </div>
             <div class="contact">
                 <h3>Contactez-nous</h3>
-                <form action="" method="">
+                <form>
                     <input type="radio" id="mr" name="radio-group" checked>
                     <label for="mr">Mr.</label>
 
@@ -271,7 +273,7 @@
                     </div>
                     <span class="erreur erreur-rempli">Erreur, les champs marqués d'un * doivent être remplis</span>
                     <input type="submit" value="Envoyer" id="envoi">
-                    
+
                 </form>
             </div>
         </div>
@@ -282,31 +284,21 @@
                 </div>
                 <div>
                     <ul>
-                        <div class="social facebook">
-                            <li>
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                        </div>
-                        <div class="social twitter">
-                            <li>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                            </li>
-                        </div>
-                        <div class="social youtube">
-                            <li>
-                                <a href="#"><i class="fab fa-youtube"></i></a>
-                            </li>
-                        </div>
-                        <div class="social rss">
-                            <li>
-                                <a href="#"><i class="fas fa-rss"></i></a>
-                            </li>
-                        </div>
-                        <div class="social google">
-                            <li>
-                                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                            </li>
-                        </div>
+                        <li class="social facebook">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="social twitter">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="social youtube">
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </li>
+                        <li class="social rss">
+                            <a href="#"><i class="fas fa-rss"></i></a>
+                        </li>
+                        <li class="social google">
+                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -5,23 +5,15 @@ function startSlider(obj, timer) {
 
     let id = "#" + obj.attr("id");
     let slideCount = obj.find('.diapo').length;
-    slideWidth = obj.attr("data-width");
-    let sliderUlWidth = (slideCount + 1) * slideWidth;
-    let time = 2;
     let $bar,
-
-        isPause,
         tick,
-        percentTime;
-    isPause = false;
-
-    let $carousel = $('.slider'),
+        percentTime,
+        $carousel = $('.slider'),
         $img = $('.slider .diapo'),
         indexImg = $img.length - 1,
         i = 0,
         clicked = 1,
-        hasBeenClicked = false;
-    $currentImg = $img.eq(i);
+        $currentImg = $img.eq(i);
 
     $img.css('display', 'none');
     $currentImg.css('display', 'block');
@@ -34,18 +26,14 @@ function startSlider(obj, timer) {
         tick = setInterval(interval, timer);
     }
 
-
-
     function interval() {
-        if (isPause === false) {
-            percentTime += 1 / (time + 0.1);
-            $bar.css({
-                width: percentTime + "%"
-            });
-            if (percentTime >= 100) {
-                startProgressbar();
-                slideImg();
-            } 
+        percentTime += 0.5;
+        $bar.css({
+            width: percentTime + "%"
+        });
+        if (percentTime >= 100) {
+            startProgressbar();
+            slideImg();
         }
     }
 
@@ -56,31 +44,19 @@ function startSlider(obj, timer) {
         clearTimeout(tick);
     }
 
-    function startslide() {
-
-        $(id + ' .slideUl li:first-child').prependTo(id + ' .slideUl');
-        obj.find('.slideUl').css({
-            width: sliderUlWidth + 'vw',
-            marginLeft: -slideWidth + 'vw'
-        });
-
-        obj.find('.slideUl li:first-child').appendTo(obj.attr('id') + ' .slideUl');
-
-    }
-
     if (slideCount > 1) {
-        startslide();
+        $carousel.append('<div class="arrow arrow-prev"></div><div class="arrow arrow-next"></div>');
+        $carousel.append('<div class="carousel-buttons-container"><ul class="dots">');
+
         startProgressbar();
-    } else { // hade navigation buttons for 1 slide only
-        $(id + ' .control_prev').hide();
-        $(id + ' .control_next').hide();
+    } else {
+        $(id + ' .arrow-prev').hide();
+        $(id + ' .arrow-next').hide();
+        $(id + '.carousel-buttons-container');
     }
 
     // ARROW
-    $carousel.append('<div class="arrow arrow-prev"></div><div class="arrow arrow-next"></div>');
-
     $('.arrow-next').on("click", function () {
-        /* $(this).data('clicked', true); */
         percentTime = 0;
         i++;
 
@@ -144,8 +120,13 @@ function startSlider(obj, timer) {
             i = 0;
         }
 
+        if (clicked > indexImg) {
+            clicked = 0;
+
+        }
+
         $img.css('display', 'none');
-        $currentImg = $img.eq(i);
+        $currentImg = $img.eq(clicked);
         $currentImg.fadeIn("slow");
 
         clicked = i + 1;
@@ -155,7 +136,6 @@ function startSlider(obj, timer) {
     }
 
     // DOTS
-    $carousel.append('<div class="carousel-buttons-container"><ul class="dots">');
     let addId = i + 1;
 
     for (let a = 0; a <= indexImg; a++) {
@@ -168,6 +148,8 @@ function startSlider(obj, timer) {
         let findIdClicked = $(this).attr("id");
         let splitString = findIdClicked.split("carousel");
         let findTheNumb = splitString[1];
+
+        /* clicked = findTheNumb; */
 
         $img.css('display', 'none');
         $currentImg = $img.eq(findTheNumb - 1);
