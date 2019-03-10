@@ -754,10 +754,10 @@ section.paralax .btn {
 
 @media screen and (max-width: 600px) {
 
-    section .mosaic-responsive .row1,
-    section .mosaic-responsive .row2,
-    section .mosaic-responsive .row3,
-    section .mosaic-responsive .row4 {
+    section .mosaic-responsive .col1,
+    section .mosaic-responsive .col2,
+    section .mosaic-responsive .col3,
+    section .mosaic-responsive .col4 {
         display: block !important;
         text-align: center;
     }
@@ -775,10 +775,10 @@ section.paralax .btn {
         display: none;
     }
 
-    section .mosaic-responsive .row1,
-    section .mosaic-responsive .row2,
-    section .mosaic-responsive .row3,
-    section .mosaic-responsive .row4 {
+    section .mosaic-responsive .col1,
+    section .mosaic-responsive .col2,
+    section .mosaic-responsive .col3,
+    section .mosaic-responsive .col4 {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;

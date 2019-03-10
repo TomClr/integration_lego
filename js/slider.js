@@ -3,15 +3,16 @@ startSlider($('#slider'), 20);
 
 function startSlider(obj, timer) {
 
-    let id = "#" + obj.attr("id");
-    let slideCount = obj.find('.diapo').length;
-    let $bar,
+    let id = "#" + obj.attr("id"),
+        slideCount = obj.find('.diapo').length,
+        $bar,
         tick,
         percentTime,
         $carousel = $('.slider'),
         $img = $('.slider .diapo'),
         indexImg = $img.length - 1,
         i = 0,
+        addId = 1,
         clicked = 1,
         $currentImg = $img.eq(i);
 
@@ -22,7 +23,6 @@ function startSlider(obj, timer) {
 
     function startProgressbar() {
         resetProgressbar();
-        percentTime = 0;
         tick = setInterval(interval, timer);
     }
 
@@ -38,9 +38,7 @@ function startSlider(obj, timer) {
     }
 
     function resetProgressbar() {
-        $bar.css({
-            width: 0 + '%'
-        });
+        percentTime = 0;
         clearTimeout(tick);
     }
 
@@ -57,7 +55,7 @@ function startSlider(obj, timer) {
 
     // ARROW
     $('.arrow-next').on("click", function () {
-        percentTime = 0;
+        startProgressbar();
         i++;
 
         if (i <= indexImg) {
@@ -86,7 +84,7 @@ function startSlider(obj, timer) {
 
     $('.arrow-prev').on("click", function () {
         i--;
-        percentTime = 0;
+        startProgressbar();
 
         if (i >= 0) {
             $img.css('display', 'none');
@@ -136,20 +134,16 @@ function startSlider(obj, timer) {
     }
 
     // DOTS
-    let addId = i + 1;
-
     for (let a = 0; a <= indexImg; a++) {
         $('.dots').append('<li class="carousel-buttons" id="carousel' + addId++ + '"></li>');
     }
 
     $('.carousel-buttons').click(function () {
-        percentTime = 0;
+        startProgressbar();
 
-        let findIdClicked = $(this).attr("id");
-        let splitString = findIdClicked.split("carousel");
-        let findTheNumb = splitString[1];
-
-        /* clicked = findTheNumb; */
+        let findIdClicked = $(this).attr("id"),
+            splitString = findIdClicked.split("carousel"),
+            findTheNumb = splitString[1];
 
         $img.css('display', 'none');
         $currentImg = $img.eq(findTheNumb - 1);

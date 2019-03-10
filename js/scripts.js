@@ -3,6 +3,7 @@ $(window).on("load", function () {
     $('.loader').fadeOut("slow");
 });
 
+// Menu responsive
 $(document).ready(function () {
 
     $('.menu > li a').on('click', function () {
@@ -20,7 +21,7 @@ $(document).ready(function () {
         };
     });
 
-    // IMAGES ANIMEES
+    // Images animées
     function animImg(selecteur, url, urlChange) {
         $(selecteur).mouseover(function () {
             $(selecteur + ' img').attr('src', urlChange);
